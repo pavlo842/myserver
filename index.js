@@ -16,6 +16,14 @@ app.get('/products', (req, res, next) => {
     res.json({products}); // упаковка массива в json и передача его на клиент
 }); // вызов сервера http://localhost:5000/products
 
+app.get('/products/:id', (req, res, next) => {
+    if (products[req.params.id]) { // проверка если запрос продукта по id будет на BE то отправить клиенту продукт по id 
+        res.send(products[req.params.id]);
+    } else {
+        res.status(404).send('Product not found!'); // если продукта по id не найдено то отправиться сообщение со статусом ошибки
+    }
+});
+
 app.listen(5000, () => { // инициализация сервера на 5000 порту
     console.log('Its started', new Date()); // сообщение в консоль с датой запуска  
 });
