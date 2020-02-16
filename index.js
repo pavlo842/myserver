@@ -26,6 +26,12 @@ app.get('/products/:id', (req, res, next) => {
     }
 });
 
+// РЕДИРЕКТ
+app.get('/blog', (req, res, next) => {
+    // res.redirect('https://www.onliner.by/'); // редирект на сторонний ресурс
+    res.redirect('/'); // редирект на главную страницу - первым параметром можно передать статус
+});
+
 booksRouter.get('/', (req, res) => { // страница через роутер booksRouter http://localhost:5000/books
     res.send('Books');
 });
