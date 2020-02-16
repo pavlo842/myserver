@@ -32,6 +32,14 @@ app.get('/blog', (req, res, next) => {
     res.redirect('/'); // редирект на главную страницу - первым параметром можно передать статус
 });
 
+// DOWNLOAD FILES
+app.get('/downloadBooks', (req, res, next) => {
+    // res.download('./public/books.html'); // путь для загрузки файла
+    res.download('./public/books.txt', 'downloadfiles', () => { // путь для загрузки файла - второй параметр кастомное имя файла
+        console.log('file sent to client brouser!'); // третий параметр callback сообщение об отправке файла на клиент
+    });
+});
+
 booksRouter.get('/', (req, res) => { // страница через роутер booksRouter http://localhost:5000/books
     res.send('Books');
 });
