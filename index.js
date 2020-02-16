@@ -10,7 +10,8 @@ app.get('/', (req, res, next) => { // вызов метода get и перед�
 });
 
 app.get('/products', (req, res, next) => {
-    res.send(products);
+    // res.send(products);
+    res.json({products}); // упаковка массива в json и передача его на клиент
 }); // вызов сервера http://localhost:5000/products
 
 app.listen(5000, () => { // инициализация сервера на 5000 порту
