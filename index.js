@@ -1,5 +1,7 @@
 const express = require('express'); // подключение express и запись в переменную express
 
+const booksRouter = express.Router(); // маршрутизатор - сущность роутера в переменной booksRouter
+
 const app = express(); // инициализация, вызов и запись в переменную app
 // app - объект с методами
 
@@ -24,6 +26,15 @@ app.get('/products/:id', (req, res, next) => {
     }
 });
 
+booksRouter.get('/', (req, res) => { // страница через роутер booksRouter http://localhost:5000/books
+    res.send('Books');
+});
+
+booksRouter.get('/about', (req, res) => { // страница через роутер booksRouter http://localhost:5000/books/about
+    res.send("About books");
+});
+
+app.use('/books', booksRouter); // инициализация маршрута http://localhost:5000/books
 app.listen(5000, () => { // инициализация сервера на 5000 порту
     console.log('Its started', new Date()); // сообщение в консоль с датой запуска  
 });
