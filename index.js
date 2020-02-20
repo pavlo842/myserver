@@ -7,6 +7,13 @@ const app = express(); // инициализация, вызов и запись
 
 const products = ['Apple', 'Pen', 'Computer'];
 
+// 014 Обработка статических файлов - предоставление статических файлов на express сервере
+// app.use(express.static('public')); // вызов д.б. до начала загрузки всех маршрутов // http://localhost:5000/books.html
+// 2-й вариант функция промежуточной обработки
+app.use('/static', express.static(__dirname + '/public')); // вызов д.б. до начала загрузки всех маршрутов // http://localhost:5000/books.html
+
+
+
 app.get('/', (req, res, next) => { // вызов метода get и передача в параметры '/' (стартовая страница), req - request, res - response, next - функция промежуточной обработки.
     res.send('Its working!'); // отправка сообщения клиенту при запуске сервера
 });
